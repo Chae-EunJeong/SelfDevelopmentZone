@@ -84,10 +84,9 @@
                                             <strong>주:</strong>
                                             <select v-model="order.state" class="form-control">
                                                 <option disabled value="">주</option>
-                                                <option>AL</option>
-                                                <option>AR</option>
-                                                <option>CA</option>
-                                                <option>NV</option>
+                                                <option v-for="(state, key) in states" v-bind:value="state">
+                                                    {{key}}
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -103,6 +102,8 @@
                                             <input type="checkbox"
                                                 id="gift"
                                                 value="true"
+                                                v-bind:true-value="order.sendGift"
+                                                v-bind:false-value="order.dontSendGift"
                                                 v-model="order.gift">
                                             <label for="gift">선물로 보내기?</label>
                                         </div>
@@ -111,12 +112,12 @@
                                         <div class="col-md-6 boxes">
                                             <input type="radio"
                                                 id="home"
-                                                value="자택"
+                                                v-bind:value="order.home"
                                                 v-model="order.method">
                                             <label for="home">자택</label>
                                             <input type="radio"
                                                 id="business"
-                                                value="직장"
+                                                v-bind:value="order.business"
                                                 v-model="order.method">
                                             <label for="business">직장</label>    
                                         </div>
@@ -154,15 +155,24 @@
                data: {
                     sitename: "Vue.js 애견용품샵",
                     showProduct: true,
+                    states: {
+                            AL: '알라바마',
+                            AR: '애리조나',
+                            CA: '캘리포니아',
+                            NV: '네바다',
+                    },
                     order: {
                         firstName: '',
                         lastName: '',
                         address: '',
                         city: '',
                         zip: '',
-                        state: '',
                         method: '자택',
-                        gift: false,
+                        business: '직장 주소',
+                        home: '자택 주소',
+                        gift: '',
+                        sendGift: '선물로 보내기',
+                        dontSendGift: '선물로 보내지 않기'
                     },
                     product: {
                         id: 1001,
