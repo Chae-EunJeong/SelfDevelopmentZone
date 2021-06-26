@@ -157,25 +157,24 @@ const simpleMultiply = (a, b) => {
 hello();
 // quiz
 // function calculate(command, a, b)
-// command: add, substract, divide, multiply, remainder
+// command: add, substract, divide, multiply, remainde
+
+// by ellie
+// 정해진 데이터를 처리할 때는 if문 보다는 switch문 이용~!
 function calculate(command, a, b) {
-    if(command === 'add') {
-        console.log('hi');
-    } else if(command === 'substract') {
-        console.log('hi');
-    } else if(command === 'divide') {
-        console.log('hi');
+    switch (command) {
+        case 'add':
+            return a + b;
+        case 'substract':
+            return a - b;
+        case 'divide':
+            return a / b;
+        case 'multiply':
+            return a * b;
+        case 'remainder':
+            return a % b;
+        default:
+            throw Error('unknown command');
     }
 }
-
-function add(a, b) {
-    return a + b;
-}
-
-function substract(a, b) {
-    return a - b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
+console.log(calculate('add', 2, 3));
