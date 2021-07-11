@@ -63,5 +63,56 @@ const students = [
 // Q7. make an array containing only the students' scores
 // result should be: [45, 80, 90, 66, 88]
 {
-    const result = students.map   
+    // map : 배열안의 요소들을 콜백함수로 리턴된 것으로 변환
+    // 예를 들어 곱하기 2를 하는 함수를 이용해 [1,2,3]을 [2,4,6]으로 변환하는 식
+    const result = students.map((student) => student.score);
+    console.log(result);   
+}
+
+// Q8. check if there is a student with the score lower than 50
+{
+    console.clear();
+    // some() : 하나라도 조건에 만족하는 요소가 있다면 true를 반환함
+    const result = students.some((student) => student.score < 50);
+    console.log(result);
+
+    // every() : 배열의 모든 요소가 조건에 만족해야 true를 반환
+    // !를 붙여서 모든 학생들의 점수가 50점이 넘는 것이 아닐때 true를 출력 
+    const result2 = !students.every((student) => student.score >= 50)
+    console.log(result2);
+}
+
+// Q9. compute students' average score
+{
+    console.clear();
+    // reduce() : 배열의 모든 요소들의 값을 누적할 때 사용
+    // 아래 코드를 간단하게 하면  => prev
+    // const result = students.reduce((prev, curr) => prev + curr.score, 0)
+    const result = students.reduce((prev, curr) => {
+        console.log('----------------')
+        console.log(prev);
+        console.log(curr);
+        return prev + curr.score;    // 다음 콜백 호출때 prev로서 전달됨
+    }, 0);
+    console.log(result / students.length);
+}
+
+// Q10. make a string containing all the scores
+// 50점 이상인 점수만 filtering해서 출력
+// result should be: '45, 80, 90, 66, 88'
+{
+    const result = students
+    .map((student) => student.score)
+    .filter((score) => score >= 50)
+    .join(', ');
+    console.log(result);
+}
+
+// Bonus! do Q10 sorted in ascending order
+// result should be: '45, 66, 80, 88, 90'
+{
+    const result = students.map((student) => student.score)
+    .sort((a, b) => a - b)
+    .join();
+    console.log(result);
 }
