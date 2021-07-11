@@ -77,7 +77,6 @@ const fruits2 = ['🥥', '🍑'];
 const newFruits = fruits.concat(fruits2);
 console.log(newFruits);
 
-console.clear();
 // 5. Searching
 // indexOf: find the index
 console.log(fruits);
@@ -90,7 +89,6 @@ console.log(fruits.includes('🍅'));
 console.log(fruits.includes('🥥'));
 
 // lastIndexOf
-console.clear();
 console.log(fruits);
 fruits.push('🥑');
 console.log(fruits);
